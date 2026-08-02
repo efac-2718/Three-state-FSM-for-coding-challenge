@@ -19,6 +19,8 @@ real fault is an exception not a trap state.
 ## Design
 - **(ERROR requires external reset)**
 ![Alt text](https://raw.githubusercontent.com/efac-2718/FrontEnd/refs/heads/master/design.jpeg)
+
+- **(ERROR requires external reset)**
 ## Known limitations / open questions
 
 - Stray LPAD in IDLE is silently ignored — note the threat-model
