@@ -17,8 +17,7 @@ real ELP is a 2-value flag,
 real fault is an exception not a trap state.
 
 ## Design
-- **(ERROR requires external reset)**
-![Alt text](https://raw.githubusercontent.com/efac-2718/FrontEnd/refs/heads/master/design.jpeg)
+<img src="https://raw.githubusercontent.com/efac-2718/FrontEnd/refs/heads/master/design.jpeg" alt="Alt text" width="400">
 
 - **(ERROR requires external reset)**
 ## Known limitations / open questions
