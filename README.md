@@ -1,6 +1,6 @@
 # RISC-V CFI Landing-Pad FSM
 
-One-sentence summary: a 3-state SystemVerilog FSM modelling the
+a 3-state SystemVerilog FSM modelling the
 forward-edge control-flow-integrity check of the RISC-V Zicfilp
 extension. Submission for the LFX mentorship coding challenge.
 
@@ -13,18 +13,12 @@ extension. Submission for the LFX mentorship coding challenge.
 | LPAD + match → IDLE    | landing pad with matching label clears ELP |
 | mismatch → ERROR       | software-check exception (landing pad fault)|
 
-Two sentences max on the simplifications: real ELP is a 2-value flag,
+real ELP is a 2-value flag,
 real fault is an exception not a trap state.
 
-## Design decisions
-
-- **Registered (Moore) error output** — one line on the latency
-  tradeoff and why you chose it.
-- **Fail-closed default** — unreachable state encodings trap to ERROR;
-  one line on why that's the right instinct for a security block.
-- **ERROR requires external reset** — deliberate, not a bug; one line.
-- **Label write lives in the clocked block** — one line (latch avoidance).
-
+## Design
+- **(ERROR requires external reset)**
+https://raw.githubusercontent.com/efac-2718/FrontEnd/refs/heads/master/design.jpeg
 ## Known limitations / open questions
 
 - Stray LPAD in IDLE is silently ignored — note the threat-model
