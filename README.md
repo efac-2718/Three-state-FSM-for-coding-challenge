@@ -20,12 +20,10 @@ real fault is an exception not a trap state.
 <img src="https://raw.githubusercontent.com/efac-2718/FrontEnd/refs/heads/master/design.jpeg" alt="Alt text" width="400">
 
 - **(ERROR requires external reset)**
-## Known limitations / open questions
+## Known limitations and open questions
 
-- Stray LPAD in IDLE is silently ignored — note the threat-model
-  question you flagged.
-- CHECK expects LPAD on the immediately following cycle (no NOP
-  tolerance) — note the pipeline-realism question.
+- A landing pad can reach even before the machine goes into CHECK state, no check for that is performed here.
+- In the CHECK state the program expects the LPAD command on the very next cycle. If it doesn't receive it the state goes into ERROR state.
 
 ## Verification
 
@@ -36,14 +34,5 @@ real fault is an exception not a trap state.
 
 ## Running
 
-    iverilog -g2012 -o sim cfi.sv cfi_tb.sv && ./sim
-    verilator --lint-only -Wall cfi.sv
-
-## Synthesis (Altera MAX II EPM240T100C5)
-
-X / 240 LEs, fmax Y MHz (Quartus II 13.0sp1).
-cfi_demo.sv is a hardware bring-up wrapper (ROM sequencer + clock
-divider + LEDs); the deliverable is cfi.sv + cfi_tb.sv.
-
-## Files
-one line each.
+    iverilog -g2012 -o sim cfi_sargantana.sv cfi_sargantana_tb.sv && ./sim
+    verilator --lint-only -Wall cfi_sargantana.sv
