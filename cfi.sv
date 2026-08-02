@@ -1,4 +1,4 @@
-module cfi_sargantana (input logic [31:0]data_i, input logic clk_i, rstn_i, output logic error_o);
+module cfi (input logic [31:0]data_i, input logic clk_i, rstn_i, output logic error_o);
 
 	typedef enum {
 		IDLE, CHECK, ERROR
