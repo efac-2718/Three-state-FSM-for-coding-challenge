@@ -30,7 +30,7 @@ real fault is an exception not a trap state.
 
 - Self-checking testbench: golden reference model compared cycle-by-cycle via SVA, 8 directed test phases covering match/mismatch/stickiness/reset-label and command-ordering corners.
 - Lint-clean under Verilator (-Wall).
-- Simulated with VCS (via EDA Playground)
+- Simulated with VCS (via EDA Playground): https://www.edaplayground.com/x/j4Mm
 
 ## Running
 
