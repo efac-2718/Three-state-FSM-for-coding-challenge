@@ -13,8 +13,7 @@ extension. Submission for the LFX mentorship coding challenge.
 | LPAD + match → IDLE    | landing pad with matching label clears ELP |
 | mismatch → ERROR       | software-check exception (landing pad fault)|
 
-real ELP is a 2-value flag,
-real fault is an exception not a trap state.
+Simplifications: the real ELP is a two-value flag, and a real fault raises an exception rather than latching a trap state.
 
 ## Design decisions
 
@@ -30,11 +29,11 @@ real fault is an exception not a trap state.
 - **Label storage lives in the clocked block.** `label` is state, so it
   is written in `always_ff` under an enable (IDLE + SET) rather than in
   combinational code, where conditional assignment would infer a latch.
-<img src="https://raw.githubusercontent.com/efac-2718/FrontEnd/refs/heads/master/design.jpeg" alt="design" width="400">
+<img src="https://raw.githubusercontent.com/efac-2718/FrontEnd/refs/heads/master/design.jpeg" alt="CFI FSM state diagram" width="400">
 
 ## Known limitations and open questions
 
-- A landing pad can reach even before the machine goes into CHECK state, no check for that is performed here.
+- An LPAD received in IDLE is silently ignored; depending on the threat model, an unexpected landing pad could itself be treated as a violation. The spec is silent, so I chose to ignore it.
 - In the CHECK state the program expects the LPAD command on the very next cycle. If it doesn't receive it the state goes into ERROR state.
 
 ## Verification
@@ -47,7 +46,3 @@ real fault is an exception not a trap state.
 
     # Lint the design
     verilator --lint-only -Wall cfi.sv
-
-    # Simulate in ModelSim-Altera
-    vlog -sv cfi.sv Testbench/*.sv
-    vsim -c work.cfi_tb -do "run -all; quit"
