@@ -1,6 +1,6 @@
 # RISC-V CFI Landing-Pad FSM
 
-a 3-state SystemVerilog FSM modelling the
+A 3-state SystemVerilog FSM modelling the
 forward-edge control-flow-integrity check of the RISC-V Zicfilp
 extension. Submission for the LFX mentorship coding challenge.
 
@@ -38,9 +38,8 @@ real fault is an exception not a trap state.
     # Lint the design
     verilator --lint-only -Wall cfi.sv
 
-    #Simulate in ModelSim-Altera
+    # Simulate in ModelSim-Altera
     vlog -sv cfi.sv Testbench/*.sv
     vsim -c work.cfi_tb -do "run -all; quit"
 
-    #Simulate in VCS
-    vcs -sverilog -timescale=1ns/1ns cfi.sv Testbench/*.sv && ./simv
+    # Simulated with VCS (via EDA Playground)
