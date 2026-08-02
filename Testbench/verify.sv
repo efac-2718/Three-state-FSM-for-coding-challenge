@@ -39,6 +39,14 @@ module verify (input logic [31:0] data_i,
 	    fails++;
 	    $error("error_o=%b but model is in %s", error_o, m_state.name());
 	  end
+
+	always @(negedge clk_i) begin
+  		if (rstn_i && (error_o !== (m_state == M_ERROR))) begin
+    		fails++;
+    		$display("FAIL @%0t: error_o=%b but model is in %s",
+             $time, error_o, m_state.name());
+  		end
+	end
 	
 	
 	always @(negedge rstn_i) begin
