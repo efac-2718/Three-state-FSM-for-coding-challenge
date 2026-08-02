@@ -32,6 +32,7 @@ real fault is an exception not a trap state.
   phases, constrained-random stimulus, SVA assertions
   (error stickiness, label write conditions).
 - Lint-clean under Verilator (-Wall).
+- Simulated with VCS (via EDA Playground)
 
 ## Running
 
@@ -41,5 +42,3 @@ real fault is an exception not a trap state.
     # Simulate in ModelSim-Altera
     vlog -sv cfi.sv Testbench/*.sv
     vsim -c work.cfi_tb -do "run -all; quit"
-
-    # Simulated with VCS (via EDA Playground)
