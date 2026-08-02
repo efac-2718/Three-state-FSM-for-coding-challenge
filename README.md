@@ -34,5 +34,12 @@ real fault is an exception not a trap state.
 
 ## Running
 
-    iverilog -g2012 -o sim cfi_sargantana.sv cfi_sargantana_tb.sv && ./sim
+    # Lint the design
     verilator --lint-only -Wall cfi_sargantana.sv
+
+    #Simulate in ModelSim-Altera
+    vlog -sv cfi_sargantana.sv Testbench/*.sv
+    vsim -c work.cfi_sargantana_tb -do "run -all; quit"
+
+    #Simulate in VCS
+    vcs -sverilog -timescale=1ns/1ns cfi_sargantana.sv Testbench/*.sv && ./simv
