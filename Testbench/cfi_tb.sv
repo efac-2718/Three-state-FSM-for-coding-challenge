@@ -1,5 +1,5 @@
 `timescale 1ns/100ps
-module cfi_sargantana_tb;
+module cfi_tb;
 
 	logic [31:0] data_i;
 	logic clk_i;
@@ -8,12 +8,12 @@ module cfi_sargantana_tb;
 	
 	clock_gen #(100.0) c0 (.*);
 	stimulus s0 (.*);
-	cfi_sargantana dut(.*);
+	cfi dut(.*);
 	verify v0 (.*);
 	
 	initial begin 
 		$dumpfile("cfi.vcd");
-		$dumpvars(0, cfi_sargantana_tb);
+		$dumpvars(0, cfi_tb);
 	end
 
 endmodule 
