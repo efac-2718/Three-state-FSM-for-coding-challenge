@@ -29,7 +29,7 @@ Simplifications: the real ELP is a two-value flag, and a real fault raises an ex
 - **Label storage lives in the clocked block.** `label` is state, so it
   is written in `always_ff` under an enable (IDLE + SET) rather than in
   combinational code, where conditional assignment would infer a latch.
-<img src="https://raw.githubusercontent.com/efac-2718/FrontEnd/refs/heads/master/design.jpeg" alt="CFI FSM state diagram" width="400">
+<img src="docs/design.jpeg" alt="CFI FSM state diagram" width="400">
 
 ## Known limitations and open questions
 
