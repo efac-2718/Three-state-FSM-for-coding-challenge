@@ -28,9 +28,7 @@ real fault is an exception not a trap state.
 
 ## Verification
 
-- Self-checking testbench: golden reference model, 12 directed
-  phases, constrained-random stimulus, SVA assertions
-  (error stickiness, label write conditions).
+- Self-checking testbench: golden reference model compared cycle-by-cycle via SVA, 8 directed test phases covering match/mismatch/stickiness/reset-label and command-ordering corners.
 - Lint-clean under Verilator (-Wall).
 - Simulated with VCS (via EDA Playground)
 
