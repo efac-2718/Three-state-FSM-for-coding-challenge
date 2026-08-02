@@ -19,7 +19,8 @@ real fault is an exception not a trap state.
 ## Design
 <img src="https://raw.githubusercontent.com/efac-2718/FrontEnd/refs/heads/master/design.jpeg" alt="design" width="400">
 
-- **(ERROR requires external reset)**
+- **(At ERROR state external reset is required)**
+- An output_o was added to indicate that the program is in error state
 ## Known limitations and open questions
 
 - A landing pad can reach even before the machine goes into CHECK state, no check for that is performed here.
